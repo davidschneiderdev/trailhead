@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchInput from '../components/SearchInput'
 import SearchResults from '../components/SearchResults'
+import TrailPage from '../components/TrailPage'
 import styled from 'styled-components'
 import axios from 'axios'
 
@@ -15,23 +16,33 @@ const atlantaAreas = [
 const StyledSearchContainer = styled.div`
     width: 90%;
     height: auto;
+    max-height: 600px;
     border: 2px solid lightgray;
     border-radius: 15px;
     padding: 1em;
-    margin: 5em;
+    margin-top: 1em;
+
+    @media (min-width: 450px) {
+        min-width: 450px;
+        width: 35%;
+    }
 `;
 
 export default class SearchContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedOption: null,
+            selectedOption: { label: 'Marietta', value: 1, lat: 33.952602, lon: -84.549934 },
             maxDistance: 30,
             minDistance: 0,
             sortBy: 'quality',
             minNumStars: 2,
             searchIncomplete: true,
-            resultArray: null
+            trailSelected: false,
+            trailIdSelected: null,
+            currentTrailInfo: null,
+            resultArray: null,
+
         }
     }
 
@@ -66,6 +77,21 @@ export default class SearchContainer extends React.Component {
             searchIncomplete: true
         });
     }
+
+    _clearCurrentTrailInfo = () => {
+        this.setState({
+            currentTrailInfo: null
+        });
+    }
+
+    async _updateTrailIdSelected(id) {
+        console.log(id);
+        await this.setState({
+            trailIdSelected: id,
+            trailSelected: true
+        })
+        await this._getTrailInformation();
+    }
     
     _printState = (event) => {
         event.preventDefault();
@@ -84,25 +110,51 @@ export default class SearchContainer extends React.Component {
                 });
             })
             .catch(err => {
-                console.log("Not working")
+                console.log("Could not get search results.")
             });
-        
+    }
+
+    _getTrailInformation() {
+        axios.get(`https://www.trailrunproject.com/data/get-trails-by-id?ids=${this.state.trailIdSelected}&key=200688416-477b9e0468e40695259891ec8a715b01`)
+            .then(response => {
+                // console.log(response.data.trails);
+                this.setState({
+                    currentTrailInfo: response.data.trails
+                });
+            })
+            .catch(err => {
+                console.log("Could not get trail data.")
+            })
     }
 
     render() {
         let {searchIncomplete} = this.state;
-        return(
-            <StyledSearchContainer>
-                {searchIncomplete 
-                    ? <SearchInput
+        let {trailSelected} = this.state;
+        let {currentTrailInfo} = this.state;
+        let content;
+
+        if (searchIncomplete) {
+            content = <SearchInput
                         dropdownOptions={atlantaAreas}
                         updateArea={this._updateSelectedOption.bind(this)}
                         updateMaxDistance={this._updateMaxDist.bind(this)}
                         updateMinDistance={this._updateMinDist.bind(this)}
                         getResults={this._getResults.bind(this)}/> 
-                    : <SearchResults
+        } else if (trailSelected && currentTrailInfo) {
+            content = <TrailPage
+                        trailId={this.state.trailIdSelected}
+                        trailInfo={this.state.currentTrailInfo}
+                        handleReturnToList={this._clearCurrentTrailInfo.bind(this)}
+                         />
+        } else {
+            content = <SearchResults
                         onReturnToSearch={this._updateSearchIncomplete.bind(this)} 
-                        searchResults={this.state.resultArray}/> }
+                        searchResults={this.state.resultArray}
+                        handleTrailClick={this._updateTrailIdSelected.bind(this)}/>
+        }
+        return(
+            <StyledSearchContainer>
+                {content}
             </StyledSearchContainer>
         );
 

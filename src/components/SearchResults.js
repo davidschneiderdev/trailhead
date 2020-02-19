@@ -3,6 +3,13 @@ import SearchResultElement from './SearchResultElement'
 import { Button } from 'react-bootstrap'
 import styled from 'styled-components'
 
+
+const SearchResultsContainer = styled.div`
+    width: 100%;
+    height: 400px;
+    overflow: auto;
+`;
+
 const StyledButton = styled(Button)`
     width: 100%;
     background-color: white;
@@ -10,35 +17,48 @@ const StyledButton = styled(Button)`
     color: gray;
 `;
 
-export default function SearchResults(props) {
+// const resultsLogged = props.searchResults;
 
-    const resultsLogged = props.searchResults;
+export default class SearchResults extends React.Component {
 
-    function onReturnToSearch() {
-        props.onReturnToSearch()
+    onReturnToSearch() {
+        this.props.onReturnToSearch()
     }
 
-    return(
-        <div>
-            <StyledButton
-                onClick={onReturnToSearch.bind(this)}
-            >Back To Search</StyledButton>
+    onTrailSelect(id) {
+        this.props.handleTrailClick(id)
+    }
 
-            {resultsLogged ? (
-                props.searchResults.map(result => {
-                    return(
-                        <SearchResultElement 
-                            name={result.name}
-                            location={result.location}
-                            summary={result.summary}
-                            length={result.length}
-                            stars={result.stars}
-                        />
-                    );
-                })     
-            ) : ('')
-            }
-        </div>
-    );
+    render() {
+        return(
+            <div>
+                <StyledButton
+                    onClick={this.onReturnToSearch.bind(this)}
+                >Back To Search</StyledButton>
+                <SearchResultsContainer>
+                    {this.props.searchResults ? (
+                        this.props.searchResults.map(result => {
+                            return(
+                                <SearchResultElement
+                                    id={result.id}
+                                    name={result.name}
+                                    location={result.location}
+                                    summary={result.summary}
+                                    length={result.length}
+                                    stars={result.stars}
+                                    numRatings={result.starVotes}
+                                    imgSrc={result.imgSmall}
+                                    onTrailClick={this.onTrailSelect.bind(this)}
+                                />
+                            );
+                        })     
+                    ) : ('')
+                    }
+    
+                </SearchResultsContainer>
+            </div>
+        );
+
+    }
 }
 
