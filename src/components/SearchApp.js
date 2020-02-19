@@ -1,15 +1,16 @@
 import React from 'react';
 import Select from 'react-select'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import { Form, Button, Row } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import styled from 'styled-components'
+import axios from 'axios'
 
 const atlantaAreas = [
-    { label: 'Marietta', value: 1 },
-    { label: 'Smyrna', value: 2 },
-    { label: 'Norcross', value: 3 },
-    { label: 'Roswell', value: 4 },
-    { label: 'Rivermont', value: 5 },
+    { label: 'Marietta', value: 1, lat: 33.952602, lon: -84.549934 },
+    { label: 'Smyrna', value: 2, lat: 33.883991, lon: -84.514374 },
+    { label: 'Norcross', value: 3, lat: 33.941212, lon: -84.213531 },
+    { label: 'Roswell', value: 4, lat: 34.022003, lon: -84.361549 },
+    { label: 'Sandy Springs', value: 5, lat: 33.935101, lon: -84.360924 },
 ]
 
 const SearchAppContainer = styled.div`
@@ -26,17 +27,17 @@ const StyledOptions = styled.form`
     text-align: left;
 `;
 
-const StyledSortBySection = styled(Form.Group)`
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    color: gray;
-`;
+// const StyledSortBySection = styled(Form.Group)`
+//     display: flex;
+//     justify-content: flex-start;
+//     align-items: center;
+//     color: gray;
+// `;
 
-const StyledSortByTitle = styled(Form.Label)`
-    margin: 0;
-    font-size: 16px;
-`;
+// const StyledSortByTitle = styled(Form.Label)`
+//     margin: 0;
+//     font-size: 16px;
+// `;
 
 const MaxMinSection = styled.div`
     display: flex;
@@ -44,19 +45,19 @@ const MaxMinSection = styled.div`
     margin-top: 1em;
 `;
 
-const StyledSortRadioList = styled(Row)`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-left: 1em;
-    color: gray;
-`;
+// const StyledSortRadioList = styled(Row)`
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     justify-content: flex-start;
+//     align-items: flex-start;
+//     margin-left: 1em;
+//     color: gray;
+// `;
 
-const StyledRadioButton = styled(Form.Check)`
-    margin-right: 1em;
-`;
+// const StyledRadioButton = styled(Form.Check)`
+//     margin-right: 1em;
+// `;
 
 const StyledButton = styled(Button)`
     width: 100%;
@@ -70,9 +71,9 @@ export default class SearchApp extends React.Component {
         super(props);
         this.state = {
             selectedOption: null,
-            maxDistance: 0,
+            maxDistance: 30,
             minDistance: 0,
-            sortBy: 'rating',
+            sortBy: 'quality',
             minNumStars: 2
         }
     }
@@ -106,6 +107,20 @@ export default class SearchApp extends React.Component {
         console.table(this.state);
     }
 
+    _getResults = (event) => {
+        event.preventDefault();
+        console.table(this.state);
+        axios.get(`https://www.trailrunproject.com/data/get-trails?lat=${this.state.selectedOption.lat}&lon=${this.state.selectedOption.lon}&maxDistance=${this.state.maxDistance}&minLength=${this.state.minDistance}&sort=${this.state.sortBy}&key=200688416-477b9e0468e40695259891ec8a715b01`)
+            .then(response => {
+                console.log(response)
+                }  
+            )
+            .catch(err => {
+                console.log("Not working")
+            })
+        // console.log("working")
+    }
+
     render() {
         return(
             <SearchAppContainer>
@@ -128,7 +143,7 @@ export default class SearchApp extends React.Component {
                                 onChange={this._updateMinDist} />
                         </Form.Group>
                     </MaxMinSection>
-                    <StyledSortBySection>
+                    {/* <StyledSortBySection>
                         <StyledSortByTitle >
                             Sort Results By:
                         </StyledSortByTitle>
@@ -146,15 +161,15 @@ export default class SearchApp extends React.Component {
                             label="Rating"
                             name="formHorizontalRadios"
                             id="formHorizontalRadios2"
-                            value="rating"
+                            value="quality"
                             onChange={this._updateSortBy}
                             />
                         </StyledSortRadioList>
-                    </StyledSortBySection>
+                    </StyledSortBySection> */}
                     <StyledButton 
                         variant="primary" 
                         type="submit"
-                        onClick={this._printState}>
+                        onClick={this._getResults}>
                         Search Trails
                     </StyledButton>
                 </StyledOptions>
