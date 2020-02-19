@@ -1,6 +1,5 @@
 import React from 'react';
-import './App.css';
-import SearchApp from './components/SearchApp';
+import SearchContainer from './containers/SearchContainer'
 import styled from 'styled-components'
 
 const AppContainer = styled.div`
@@ -15,7 +14,7 @@ const AppContainer = styled.div`
 function App() {
   return (
     <AppContainer>
-        <SearchApp />
+        <SearchContainer />
     </AppContainer>
   );
 }
