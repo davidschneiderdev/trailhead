@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchContainer from './containers/SearchContainer'
+import TrailheadApp from './TrailheadApp'
 import styled from 'styled-components'
 
 const AppContainer = styled.div`
@@ -11,12 +11,14 @@ const AppContainer = styled.div`
   align-items: center;
 `;
 
-function App() {
-  return (
-    <AppContainer>
-        <SearchContainer />
-    </AppContainer>
-  );
+export default function App() {
+
+    return (
+      <AppContainer>
+          <TrailheadApp />
+      </AppContainer>
+    );
+  
 }
 
-export default App;
+

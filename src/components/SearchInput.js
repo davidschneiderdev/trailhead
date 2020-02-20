@@ -17,7 +17,8 @@ const MaxMinSection = styled.div`
 
 const StyledButton = styled(Button)`
     width: 100%;
-    background-color: gray;
+    background-color: #f5f5f5;
+    color: darkgray;
 `;
 
 export default class SearchInput extends React.Component {

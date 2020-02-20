@@ -14,14 +14,16 @@ const atlantaAreas = [
 ]
 
 const StyledSearchContainer = styled.div`
-    width: 90%;
+    width: 100%;
     height: auto;
     max-height: 600px;
-    border: 2px solid lightgray;
+    border: 1px solid gray;
     border-radius: 15px;
     padding: 1em;
     margin-top: 1em;
-
+    margin-left: 0px;
+    transition: margin 2s;
+    
     @media (min-width: 450px) {
         min-width: 450px;
         width: 35%;
@@ -41,6 +43,7 @@ export default class SearchContainer extends React.Component {
             trailSelected: false,
             trailIdSelected: null,
             currentTrailInfo: null,
+            favTrailSelected: false,
             resultArray: null,
 
         }
@@ -82,6 +85,13 @@ export default class SearchContainer extends React.Component {
         this.setState({
             currentTrailInfo: null
         });
+    }
+
+    _updateFavTrailSelected = () => {
+        console.log('fav trail selected');
+        this.setState({
+            favTrailSelected: true
+        })
     }
 
     async _updateTrailIdSelected(id) {
@@ -127,6 +137,14 @@ export default class SearchContainer extends React.Component {
             })
     }
 
+    _onFavClick(trailInfo) {
+        this.props.handleFavClick(trailInfo)
+    }
+
+    _onLogClick(trailInfo) {
+        this.props.handleLogClick(trailInfo)
+    }
+
     render() {
         let {searchIncomplete} = this.state;
         let {trailSelected} = this.state;
@@ -145,6 +163,8 @@ export default class SearchContainer extends React.Component {
                         trailId={this.state.trailIdSelected}
                         trailInfo={this.state.currentTrailInfo}
                         handleReturnToList={this._clearCurrentTrailInfo.bind(this)}
+                        handleFavClick={this._onFavClick.bind(this)}
+                        handleLogClick={this._onLogClick.bind(this)}
                          />
         } else {
             content = <SearchResults
