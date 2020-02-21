@@ -58,7 +58,7 @@ export default class RunLogEntryForm extends React.Component {
                                </StyledLogHeader>
                                <form>
                                    <input
-                                       placeholder='Date run (dd/mm/yy)'
+                                       placeholder='Enter date run (dd/mm/yy)'
                                        onChange={this.updateRunDate.bind(this)}>
                                    </input>
                                </form>

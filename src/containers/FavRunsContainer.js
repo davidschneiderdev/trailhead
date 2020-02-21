@@ -9,13 +9,18 @@ const StyledFavRunsContainer = styled.div`
     border: 1px solid gray;
     border-radius: 15px;
     padding: 1em;
-    margin: 2em;
-    transition: margin 2s;
+    margin-bottom: 2em;
 
     @media (min-width: 450px) {
         min-width: 450px;
         width: 35%;
     }
+`;
+
+const SavedTrailsTitle = styled.div`
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
 `;
 
 const StyledListItem = styled.div`
@@ -41,7 +46,7 @@ export default class FavRunsContainer extends React.Component {
         
         return (
             <StyledFavRunsContainer>
-              <p>Favorite Trails:</p>  
+              <SavedTrailsTitle>Saved Trails</SavedTrailsTitle>  
               {
                  this.props.favRuns.map(trail => {
                      return(

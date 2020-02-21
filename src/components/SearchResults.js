@@ -3,18 +3,29 @@ import SearchResultElement from './SearchResultElement'
 import { Button } from 'react-bootstrap'
 import styled from 'styled-components'
 
+const StyledSearchResultsContainer = styled.div`
+    width: 100%:
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
 
-const SearchResultsContainer = styled.div`
+const SearchResultsContents = styled.div`
     width: 100%;
-    height: 400px;
+    height: 100%;
     overflow: auto;
+    padding: 1em;
 `;
 
 const StyledButton = styled(Button)`
-    width: 100%;
+    width: 90%;
+    height: 100%;
     background-color: white;
-    margin-bottom: 2em;
     color: gray;
+    border: 2px solid lightgray;
+    border-radius: 30px;
 `;
 
 // const resultsLogged = props.searchResults;
@@ -31,11 +42,11 @@ export default class SearchResults extends React.Component {
 
     render() {
         return(
-            <div>
+            <StyledSearchResultsContainer>
                 <StyledButton
                     onClick={this.onReturnToSearch.bind(this)}
                 >Back To Search</StyledButton>
-                <SearchResultsContainer>
+                <SearchResultsContents>
                     {this.props.searchResults ? (
                         this.props.searchResults.map(result => {
                             return(
@@ -55,8 +66,8 @@ export default class SearchResults extends React.Component {
                     ) : ('')
                     }
     
-                </SearchResultsContainer>
-            </div>
+                </SearchResultsContents>
+            </StyledSearchResultsContainer>
         );
 
     }

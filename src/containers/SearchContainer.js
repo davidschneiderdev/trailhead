@@ -15,18 +15,12 @@ const atlantaAreas = [
 
 const StyledSearchContainer = styled.div`
     width: 100%;
-    height: auto;
-    max-height: 600px;
-    border: 1px solid gray;
-    border-radius: 15px;
-    padding: 1em;
+    height: 100%;
     margin-top: 1em;
     margin-left: 0px;
-    transition: margin 2s;
     
     @media (min-width: 450px) {
         min-width: 450px;
-        width: 35%;
     }
 `;
 
@@ -146,9 +140,7 @@ export default class SearchContainer extends React.Component {
     }
 
     render() {
-        let {searchIncomplete} = this.state;
-        let {trailSelected} = this.state;
-        let {currentTrailInfo} = this.state;
+        let { searchIncomplete, trailSelected, currentTrailInfo } = this.state;
         let content;
 
         if (searchIncomplete) {
@@ -177,7 +169,5 @@ export default class SearchContainer extends React.Component {
                 {content}
             </StyledSearchContainer>
         );
-
     }
-
 }

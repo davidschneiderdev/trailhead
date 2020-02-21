@@ -7,17 +7,21 @@ const StyledRunLogContainer = styled.div`
     width: 100%;
     height: auto;
     max-height: 600px;
-    border: 1px solid gray;
-    border-radius: 15px;
     padding: 1em;
-    margin-top: 1em;
-    margin-left: 0px;
-    transition: margin 2s;
+    margin: 1em 0 1em 0;
+    // margin-top: 1em;
+    // margin-left: 0px;
+    border: 1px solid gray;
 
     @media (min-width: 450px) {
         min-width: 450px;
         width: 35%;
     }
+`;
+
+const RunLogTitle = styled.div`
+    font-size: 30px;
+    margin-bottom: 1em;
 `;
 
 export default class RunLogContainer extends React.Component {
@@ -39,7 +43,7 @@ export default class RunLogContainer extends React.Component {
 
         return (
             <StyledRunLogContainer>
-              <p>Run Log:</p>  
+              <RunLogTitle>Run Log</RunLogTitle>  
               {content}
               <RunLogList
                 completeRunLog={this.props.runLog}/>

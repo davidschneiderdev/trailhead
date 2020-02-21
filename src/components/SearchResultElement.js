@@ -2,13 +2,21 @@ import React from 'react'
 import styled from 'styled-components'
 
 const ElementContainer = styled.div`
-    height: 150px;
+    height: auto;
     width: 100%;
     display: flex;
-    border: 1px solid lightgray;
     border-radius: 10px;
     margin-bottom: 2em;
     background-color: white;
+    box-shadow:
+  0 0px 2.2px rgba(0, 0, 0, 0.02),
+  0 0px 5.3px rgba(0, 0, 0, 0.028),
+  0 0px 10px rgba(0, 0, 0, 0.035),
+  0 0px 17.9px rgba(0, 0, 0, 0.042),
+  0 0px 33.4px rgba(0, 0, 0, 0.05),
+  0 0px 80px rgba(0, 0, 0, 0.07)
+;
+
 `;
 
 const ElementImage = styled.div`
@@ -47,7 +55,7 @@ const ElementTextBottom = styled.div`
 `;
 
 const ElementTitle = styled.div`
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     margin: 0;
 
