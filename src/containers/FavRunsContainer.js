@@ -3,13 +3,22 @@ import styled from 'styled-components'
 import { Button } from 'react-bootstrap'
 
 const StyledFavRunsContainer = styled.div`
-    width: 100%;
-    height: auto;
+    width: 99%;
+    height: 100vh;
     max-height: 600px;
-    border: 1px solid gray;
-    border-radius: 15px;
-    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 30px;
+    padding: 2em;
     margin-bottom: 2em;
+    background-color: white;
+    box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.02),
+    0 0px 5.3px rgba(0, 0, 0, 0.028),
+    0 0px 10px rgba(0, 0, 0, 0.035),
+    0 0px 17.9px rgba(0, 0, 0, 0.042),
+    0 0px 33.4px rgba(0, 0, 0, 0.05),
+    0 0px 80px rgba(0, 0, 0, 0.07)
 
     @media (min-width: 450px) {
         min-width: 450px;
@@ -19,19 +28,18 @@ const StyledFavRunsContainer = styled.div`
 
 const SavedTrailsTitle = styled.div`
     width: 100%;
-    height: 100%;
     font-size: 30px;
 `;
 
 const StyledListItem = styled.div`
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1em;
     margin-bottom: 1em;
-    border: 1px solid gray;
     border-radius: 3px;
-    background-color: #f5f5f5;
 `;
 
 export default class FavRunsContainer extends React.Component {

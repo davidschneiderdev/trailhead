@@ -5,23 +5,71 @@ import RunLogList from '../components/RunLogList'
 
 const StyledRunLogContainer = styled.div`
     width: 100%;
-    height: auto;
-    max-height: 600px;
-    padding: 1em;
-    margin: 1em 0 1em 0;
-    // margin-top: 1em;
-    // margin-left: 0px;
-    border: 1px solid gray;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    border-radius: 30px;
+    background-color: white;
+    box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.02),
+    0 0px 5.3px rgba(0, 0, 0, 0.028),
+    0 0px 10px rgba(0, 0, 0, 0.035),
+    0 0px 17.9px rgba(0, 0, 0, 0.042),
+    0 0px 33.4px rgba(0, 0, 0, 0.05),
+    0 0px 80px rgba(0, 0, 0, 0.07)
+  ;
+`;
 
-    @media (min-width: 450px) {
-        min-width: 450px;
-        width: 35%;
-    }
+const RunLogContainerContents = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    background-color: white;
+    z-index: 100;
+    border-radius: 30px;
+    box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.02),
+    0 0px 5.3px rgba(0, 0, 0, 0.028),
+    0 0px 10px rgba(0, 0, 0, 0.035),
+    0 0px 17.9px rgba(0, 0, 0, 0.042),
+    0 0px 33.4px rgba(0, 0, 0, 0.05),
+    0 0px 80px rgba(0, 0, 0, 0.07)
+    ;
+`;
+
+const RunLogListContainer = styled.div`
+    width: 100%:
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+    padding: 0;
+  
 `;
 
 const RunLogTitle = styled.div`
     font-size: 30px;
     margin-bottom: 1em;
+`;
+
+const RunLogNav = styled.div`
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(42, 67, 55);
+    margin-top: -30px;
+    z-index: 1;
+
+    @media (min-width: 450px) {
+    border-radius: 6px;
+    }
 `;
 
 export default class RunLogContainer extends React.Component {
@@ -43,10 +91,15 @@ export default class RunLogContainer extends React.Component {
 
         return (
             <StyledRunLogContainer>
-              <RunLogTitle>Run Log</RunLogTitle>  
-              {content}
-              <RunLogList
-                completeRunLog={this.props.runLog}/>
+              <RunLogContainerContents>
+                <RunLogTitle>Run Log</RunLogTitle> 
+                {content}
+                <RunLogListContainer>
+                    <RunLogList
+                        completeRunLog={this.props.runLog}/>
+                </RunLogListContainer>
+              </RunLogContainerContents>
+              <RunLogNav></RunLogNav>
             </StyledRunLogContainer>
         )
     }

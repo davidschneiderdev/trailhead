@@ -1,20 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledLogEntry = styled.div`
+const StyledLogElement = styled.div`
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    padding: 1em;
-    margin-bottom: 1em;
-    border: 1px solid gray;
+    // border: 1px solid gray;
     border-radius: 3px;
-    background-color: #f5f5f5;
+    padding: 1em;
+    // background-color: #f5f5f5;
 `;
 
 const StyledLogContent = styled.div`
     width: 100%;
+    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,22 +26,26 @@ const StyledLogContent = styled.div`
     border-bottom: .5px solid lightgray;
 `;
 
+const RunLogLine = styled.div`
+    margin: 10px;
+`;
+
 export default function RunLogList(props) {
 
     
     return(
-        <StyledLogEntry>
+        <StyledLogElement>
             {
                 props.completeRunLog.map(logObject => {
                     return(
                         <StyledLogContent>
-                            <div>{logObject.dateRun}</div>
-                            <div>{logObject.name}</div>
-                            <div>{logObject.length} mi.</div>
+                            <RunLogLine>{logObject.dateRun}</RunLogLine>
+                            <RunLogLine>{logObject.name}</RunLogLine>
+                            <RunLogLine>{logObject.length} mi.</RunLogLine>
                         </StyledLogContent>
                     );
                 })
             }
-        </StyledLogEntry>
+        </StyledLogElement>
     )
 }

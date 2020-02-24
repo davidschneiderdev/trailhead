@@ -17,9 +17,8 @@ const TrailheadAppContainer = styled.div`
   background-color: rgb(243, 242, 241);
 
   @media (min-width: 450px) {
-    height: 100%;
+    height: 100vh;
     max-width: 450px;
-    margin-top: 3em;
     border-radius: 8px;
     border: .5px solid lightgray;
     box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.02),
@@ -37,11 +36,24 @@ const TrailheadNav = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 1em;
+    padding: 1.5em;
+`;
+
+const TrailheadLogoContainer = styled.div`
+    height: 30px;
+    width: 30px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+    font-weight: 800;
+    padding: 5px;
 `;
 
 const TrailheadNavIcon = styled.div`
-    font-size: 20px;
+    font-size: 22px;
     color: gray;
 `;
 
@@ -52,7 +64,7 @@ export default class TrailheadApp extends React.Component {
         this.state = {
             currentContainer: 'search',
             favRunsArray: [],
-            runLogArray: [{name: 'West Palisades', dateRun: '12/20/2020', length: '4.2'}],
+            runLogArray: [{name: 'West Palisades', dateRun: '2019-12-20', length: '4.2'}],
             currentRunLogEntry: [],
             isLogEntered: false
         }
@@ -120,8 +132,10 @@ export default class TrailheadApp extends React.Component {
     render() {
         let { currentContainer } = this.state;
         let displayCurrentContainer;
-
         let appBackgroundColor;
+        let dashboardButtonColor;
+        let displayAppNav;
+        let logoColor = {color: 'gray'};
 
         if (currentContainer === 'search') {
             displayCurrentContainer = <SearchContainer
@@ -141,14 +155,28 @@ export default class TrailheadApp extends React.Component {
             displayCurrentContainer = <DashboardContainer
             handleNavClick={this._updateCurrentContainer.bind(this)}/>;
             appBackgroundColor = {backgroundColor: "rgb(42, 67, 55)"};
+            dashboardButtonColor = {color: "#e6e6e6"};
+            displayAppNav = {display: "flex"}
+            logoColor = {color: "#e6e6e6"};
         }
 
         return (
             <TrailheadAppContainer
                 style={appBackgroundColor}>
-                <TrailheadNav>
-                    <TrailheadNavIcon onClick={this._updateCurrentToDashboard.bind(this)}><FontAwesomeIcon icon={faBars}/></TrailheadNavIcon>
-                    <TrailheadNavIcon onClick={this._updateCurrentToSearch.bind(this)}><FontAwesomeIcon icon={faSearch}/></TrailheadNavIcon>
+                <TrailheadNav
+                    style={displayAppNav}>
+                    <TrailheadNavIcon 
+                        onClick={this._updateCurrentToDashboard.bind(this)}
+                        style={dashboardButtonColor}>
+                            <FontAwesomeIcon icon={faBars}/>
+                    </TrailheadNavIcon>
+                    <TrailheadLogoContainer
+                        style={logoColor}>trailhead</TrailheadLogoContainer>
+                    <TrailheadNavIcon 
+                        onClick={this._updateCurrentToSearch.bind(this)}
+                        style={dashboardButtonColor}>
+                        <FontAwesomeIcon icon={faSearch}/>
+                    </TrailheadNavIcon>
                 </TrailheadNav>
                 {displayCurrentContainer}
             </TrailheadAppContainer>

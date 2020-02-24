@@ -12,21 +12,22 @@ const StyledSearchResultsContainer = styled.div`
     align-items: center;
 `;
 
-const SearchResultsContents = styled.div`
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    padding: 1em;
-`;
-
 const StyledButton = styled(Button)`
     width: 90%;
-    height: 100%;
     background-color: white;
     color: gray;
     border: 2px solid lightgray;
     border-radius: 30px;
+    margin-bottom: 1em;
 `;
+
+const SearchResultsContents = styled.div`
+    width: 100%;
+    max-height: 80vh;
+    overflow: auto;
+    padding: 1em;
+`;
+
 
 // const resultsLogged = props.searchResults;
 
@@ -45,7 +46,7 @@ export default class SearchResults extends React.Component {
             <StyledSearchResultsContainer>
                 <StyledButton
                     onClick={this.onReturnToSearch.bind(this)}
-                >Back To Search</StyledButton>
+                >Back To Search Options</StyledButton>
                 <SearchResultsContents>
                     {this.props.searchResults ? (
                         this.props.searchResults.map(result => {

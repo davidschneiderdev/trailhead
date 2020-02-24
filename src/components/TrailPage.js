@@ -37,7 +37,7 @@ const TrailPageNav = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    // justify-content: center;
+    justify-content: center;
     background-color: rgb(42, 67, 55);
     margin-top: -30px;
 
@@ -58,12 +58,18 @@ const TrailPageNavButtonList = styled.ul`
 `;
 
 const TrailPageNavButton = styled.li`
-    color: white;
-    font-size: 20px;
-    width: 50%;
     height: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    width: 50%;
+
+    > * {
+        margin: 10px;
+    }
+    
 `;
 
 const StyledButton = styled(Button)`
@@ -97,7 +103,7 @@ export default class TrailPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            favText: <FontAwesomeIcon icon={faHeart} />,
+            favText: <div><FontAwesomeIcon icon={faHeart} /> Save Trail</div>,
             logText: <FontAwesomeIcon icon={faBook} />
         }
     }
@@ -117,7 +123,7 @@ export default class TrailPage extends React.Component {
 
     changeFavButtonText = () => {
         this.setState({
-            favText: 'Added to favorites'});
+            favText: 'Saved!'});
     }
 
     render() {
@@ -128,7 +134,7 @@ export default class TrailPage extends React.Component {
             <TrailPageContainer>
                 <TrailInfoContainer>
                     <StyledButton
-                        onClick={this.onReturnToList.bind(this)}>Return To Search Results
+                        onClick={this.onReturnToList.bind(this)}>Saved
                     </StyledButton>
                     <TrailImageContainer>
                         <TrailImage style={{backgroundImage: `url(${this.props.trailInfo[0].imgSmallMed})`}} />
@@ -147,7 +153,7 @@ export default class TrailPage extends React.Component {
                             </TrailPageNavButton>
                         <TrailPageNavButton
                             onClick={this.onLogClick.bind(this)}>
-                            {logText}
+                            {logText} Log Run
                         </TrailPageNavButton>
                     </TrailPageNavButtonList>
                 </TrailPageNav>

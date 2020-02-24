@@ -39,7 +39,6 @@ export default class SearchContainer extends React.Component {
             currentTrailInfo: null,
             favTrailSelected: false,
             resultArray: null,
-
         }
     }
 
