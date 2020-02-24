@@ -57,6 +57,10 @@ const TrailheadLogoContainer = styled.div`
 const TrailheadNavIcon = styled.div`
     font-size: 22px;
     color: gray;
+
+    &:hover {
+        color: lightgray;
+    }
 `;
 
 export default class TrailheadApp extends React.Component {

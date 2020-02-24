@@ -67,6 +67,10 @@ const TrailPageNavButton = styled.li`
     font-size: 20px;
     width: 50%;
 
+    &:hover {
+        color: lightgray;
+    }
+
     > * {
         margin: 10px;
     }
