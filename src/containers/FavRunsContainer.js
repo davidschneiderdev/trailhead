@@ -50,6 +50,15 @@ const ItemName = styled.div`
 const ItemLength = styled.div`
     margin: 0;
 `;
+
+const StyledDeleteButton = styled(Button)`
+    background-color: white;
+    color: gray;
+    font-size: 10px;
+    font-weight: 600;
+    border: 2px solid lightgray;
+    border-radius: 8px;
+`;
 export default class FavRunsContainer extends React.Component {
     
     
@@ -70,11 +79,11 @@ export default class FavRunsContainer extends React.Component {
                             key={trail.length}>
                              <ItemName>{trail.name}</ItemName>
                              <ItemLength>{trail.length} mi.</ItemLength>
-                             <Button
+                             <StyledDeleteButton
                                 value={trail.name}
                                 onClick={this.onDeleteClick.bind(this)}>
                                     Delete
-                                </Button>
+                                </StyledDeleteButton>
                          </StyledListItem>
                      );
                  }) 
