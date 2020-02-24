@@ -68,7 +68,7 @@ const RunLogNav = styled.div`
     z-index: 1;
 
     @media (min-width: 450px) {
-    border-radius: 6px;
+    border-radius: 15px;
     }
 `;
 

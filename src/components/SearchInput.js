@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
 import styled from 'styled-components'
 import river from '../runningTrail.jpg'
-// import river from '../river.png'
 
 const StyledInputContainer = styled.div`
     height: 100%;
@@ -98,7 +97,7 @@ const StyledDistanceLabel = styled.label`
 `;
 
 const StyledDistanceInput = styled.input`
-    width: 30px;
+    width: 35px;
     text-align: center;
     margin-left: 10px;
     background: none;

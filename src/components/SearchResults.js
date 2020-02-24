@@ -34,7 +34,7 @@ const SearchResultsContents = styled.div`
     padding: 1em;
 
     @media (min-width: 450px) {
-        height: 55vh;
+        height: 60vh;
     }
 `;
 

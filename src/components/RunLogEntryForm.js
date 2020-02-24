@@ -1,13 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
 import plusBotton from '../plus.svg'
-// import Calendar from 'react-input-calendar'
-// import Moment from 'moment';
-// import { extendMoment } from 'moment-range';
-
-// const moment = extendMoment(Moment);
-// import DatePicker from 'react-datepicker'
-// import "react-datepicker/dist/react-datepicker.css";
 
 const StyledLogEntry = styled.div`
     display: flex;
@@ -69,9 +62,6 @@ const StyledDateInput = styled.input`
     border: 0px solid white;
     border-radius: 8px;
 `;
-
-
-
 
 export default class RunLogEntryForm extends React.Component {
 

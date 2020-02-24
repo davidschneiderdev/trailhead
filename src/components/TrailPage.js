@@ -39,10 +39,11 @@ const TrailPageNav = styled.div`
     flex-direction: column;
     justify-content: center;
     background-color: rgb(42, 67, 55);
-    margin-top: -30px;
+    margin-top: -50px;
+    padding: 40px 0 40px 0;
 
     @media (min-width: 450px) {
-      border-radius: 6px;
+      border-radius: 28px;
     }
 `;
 
@@ -115,8 +116,6 @@ const TrailStars = styled.div`
     font-size: 16px;
     color: #7f7f7f;
 `;
-
-
 
 
 export default class TrailPage extends React.Component {

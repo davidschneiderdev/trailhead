@@ -50,21 +50,21 @@ export default class SearchContainer extends React.Component {
     }
     
     _updateMaxDist = (event) => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({
             maxDistance: event.target.value
         })
     }
     
     _updateMinDist = (event) => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({
             minDistance: event.target.value
         })
     }
     
     _updateSortBy = (event) => {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({
             sortBy: event.target.value
         });

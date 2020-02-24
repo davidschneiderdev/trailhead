@@ -20,7 +20,8 @@ const TrailheadAppContainer = styled.div`
     height: 80vh;
     max-width: 450px;
     border-radius: 8px;
-    border: .5px solid lightgray;
+    // border: 1px solid lightgray;
+    border-radius: 30px;
     box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.02),
     0 0px 5.3px rgba(0, 0, 0, 0.028),
     0 0px 10px rgba(0, 0, 0, 0.035),
@@ -29,6 +30,7 @@ const TrailheadAppContainer = styled.div`
     0 0px 80px rgba(0, 0, 0, 0.07)
   ;
     }
+
 `;
 
 const TrailheadNav = styled.div`
@@ -62,9 +64,9 @@ export default class TrailheadApp extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentContainer: 'search',
+            currentContainer: 'dashboard',
             favRunsArray: [],
-            runLogArray: [{name: 'West Palisades', dateRun: '2019-12-20', length: '4.2'}],
+            runLogArray: [{name: 'East Palisades', dateRun: '2019-12-20', length: '4.2'}],
             currentRunLogEntry: [],
             isLogEntered: false
         }
