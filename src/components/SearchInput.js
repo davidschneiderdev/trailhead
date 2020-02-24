@@ -68,6 +68,7 @@ const SearchGraphic = styled.img`
 `;
 
 const StyledRegionSelect = styled(Select)`
+    width: 100%;
     font-size: 16px;
     border-width: 0;
 `;

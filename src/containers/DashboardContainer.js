@@ -72,6 +72,10 @@ const StyledNavElement = styled.li`
     font-size: 3vh;
     margin-bottom: 2em;
     color: white;
+
+    > * {
+        margin-right: 10px;
+    }
 `;
 
 export default class DashboardContainer extends React.Component {
@@ -91,9 +95,9 @@ export default class DashboardContainer extends React.Component {
                     <ProfileName>Tom Runner</ProfileName>
                 </ProfileContainer>
                 <StyledDashboardNav>
-                    <StyledNavElement id='search' onClick={this.onNavClick.bind(this)}><FontAwesomeIcon icon={faCompass}/> Search Atlanta Trails</StyledNavElement>
-                    <StyledNavElement id='log' onClick={this.onNavClick.bind(this)}><FontAwesomeIcon icon={faRunning}></FontAwesomeIcon> Your Run Log</StyledNavElement>
-                    <StyledNavElement id='saved' onClick={this.onNavClick.bind(this)}><FontAwesomeIcon icon={faBookmark}></FontAwesomeIcon> Saved Trails</StyledNavElement>
+                    <StyledNavElement id='search' onClick={this.onNavClick.bind(this)}><FontAwesomeIcon icon={faCompass}/>Search Atlanta Trails</StyledNavElement>
+                    <StyledNavElement id='log' onClick={this.onNavClick.bind(this)}><FontAwesomeIcon icon={faRunning}></FontAwesomeIcon>Your Run Log</StyledNavElement>
+                    <StyledNavElement id='saved' onClick={this.onNavClick.bind(this)}><FontAwesomeIcon icon={faBookmark}></FontAwesomeIcon>Saved Trails</StyledNavElement>
                     <StyledNavElement>Options</StyledNavElement>
                     <StyledNavElement>Logout</StyledNavElement>
                 </StyledDashboardNav>
