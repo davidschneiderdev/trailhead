@@ -54,7 +54,7 @@ const RunLogListContainer = styled.div`
 
 const RunLogTitle = styled.div`
     font-size: 30px;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 `;
 
 const RunLogNav = styled.div`

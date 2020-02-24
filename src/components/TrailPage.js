@@ -20,7 +20,7 @@ const TrailInfoContainer = styled.div`
     flex-direction: column;
     border-radius: 30px;
     background-color: white;
-    padding: 2em 1em 1em 1em;
+    padding: 1.5em;
     z-index: 10;
     box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.02),
     0 0px 5.3px rgba(0, 0, 0, 0.028),
@@ -73,10 +73,11 @@ const TrailPageNavButton = styled.li`
 `;
 
 const StyledButton = styled(Button)`
+    width: 90%;
     margin-bottom: 1em;
-    background-color: white;
+    background-color: rgb(243, 242, 241);
     color: gray;
-    border: 2px solid lightgray;
+    border: 3px solid lightgray;
     border-radius: 30px;
 `;
 
@@ -96,6 +97,26 @@ const TrailImage = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
 `;
+
+const TrailDescription = styled.div`
+    font-size: 16px;
+    color: #7f7f7f;
+    margin-bottom: 1em;
+`;
+
+const TrailLength = styled.div`
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 1em;
+    color: #656565;
+`;
+
+const TrailStars = styled.div`
+    font-size: 16px;
+    color: #7f7f7f;
+`;
+
+
 
 
 export default class TrailPage extends React.Component {
@@ -132,18 +153,18 @@ export default class TrailPage extends React.Component {
         
         return(
             <TrailPageContainer>
-                <TrailInfoContainer>
                     <StyledButton
-                        onClick={this.onReturnToList.bind(this)}>Saved
+                        onClick={this.onReturnToList.bind(this)}>Return To Results
                     </StyledButton>
+                <TrailInfoContainer>
                     <TrailImageContainer>
                         <TrailImage style={{backgroundImage: `url(${this.props.trailInfo[0].imgSmallMed})`}} />
                     </TrailImageContainer>
                     {/* <img src={this.props.trailInfo[0].imgSmallMed} alt='Trail'/> */}
                     <h3>{this.props.trailInfo[0].name}</h3>
-                    <p>{this.props.trailInfo[0].summary}</p>
-                    <p>{this.props.trailInfo[0].length} miles</p>
-                    <p>{this.props.trailInfo[0].stars} ★ | {this.props.trailInfo[0].starVotes} votes</p>
+                    <TrailDescription>{this.props.trailInfo[0].summary}</TrailDescription>
+                    <TrailLength>{this.props.trailInfo[0].length} miles</TrailLength>
+                    <TrailStars>{this.props.trailInfo[0].stars} ☆ | {this.props.trailInfo[0].starVotes} votes</TrailStars>
                 </TrailInfoContainer>
                 <TrailPageNav>
                     <TrailPageNavButtonList>

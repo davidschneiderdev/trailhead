@@ -17,7 +17,7 @@ const TrailheadAppContainer = styled.div`
   background-color: rgb(243, 242, 241);
 
   @media (min-width: 450px) {
-    height: 100vh;
+    height: 80vh;
     max-width: 450px;
     border-radius: 8px;
     border: .5px solid lightgray;
@@ -71,14 +71,14 @@ export default class TrailheadApp extends React.Component {
     }
 
     _updateCurrentContainer(containerName) {
-        console.log(containerName);
+        // console.log(containerName);
         this.setState({
             currentContainer: containerName
         })
     }
 
     _updateCurrentToDashboard() {
-        console.log('dash clicked');
+        // console.log('dash clicked');
         this.setState({
             currentContainer: 'dashboard'
         })
@@ -106,7 +106,7 @@ export default class TrailheadApp extends React.Component {
     }
 
     _updateRunLogArray(newLogObject) {
-        console.log(newLogObject);
+        // console.log(newLogObject);
         this.setState({
             runLogArray: [ newLogObject[0], ...this.state.runLogArray ],
             isLogEntered: true
@@ -114,13 +114,13 @@ export default class TrailheadApp extends React.Component {
     }
 
     _deleteFromFavRuns(trailName) {
-        console.log(`delete button clicked for: ${trailName}`);
+        // console.log(`delete button clicked for: ${trailName}`);
         const newFavRunsArray = [...this.state.favRunsArray];
         let index;
         for (let trailIndex in newFavRunsArray) {
             if (newFavRunsArray[trailIndex].name === trailName) {
                 index = trailIndex;
-                console.log(index);
+                // console.log(index);
             }
         }
         if (index !== -1) newFavRunsArray.splice(index, 1);

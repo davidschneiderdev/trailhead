@@ -28,6 +28,7 @@ const StyledFavRunsContainer = styled.div`
 
 const SavedTrailsTitle = styled.div`
     width: 100%;
+    text-align: center;
     font-size: 30px;
 `;
 
@@ -42,6 +43,13 @@ const StyledListItem = styled.div`
     border-radius: 3px;
 `;
 
+const ItemName = styled.div`
+    margin: 0;
+`;
+
+const ItemLength = styled.div`
+    margin: 0;
+`;
 export default class FavRunsContainer extends React.Component {
     
     
@@ -58,9 +66,10 @@ export default class FavRunsContainer extends React.Component {
               {
                  this.props.favRuns.map(trail => {
                      return(
-                         <StyledListItem>
-                             <p>{trail.name}</p>
-                             <p>{trail.length} mi.</p>
+                         <StyledListItem
+                            key={trail.length}>
+                             <ItemName>{trail.name}</ItemName>
+                             <ItemLength>{trail.length} mi.</ItemLength>
                              <Button
                                 value={trail.name}
                                 onClick={this.onDeleteClick.bind(this)}>

@@ -15,7 +15,7 @@ const StyledDashboardContainer = styled.div`
 
     @media (min-width: 450px) {
         min-width: 450px;
-        width: 35%;
+        max-height: 700px;
     }
 `;
 
@@ -25,6 +25,8 @@ const ProfileContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
     margin-bottom: 3em;
 `;
 
@@ -67,7 +69,7 @@ const StyledNavElement = styled.li`
     &:hover {
         text-decoration: underline;
     }
-    font-size: 30px;
+    font-size: 3vh;
     margin-bottom: 2em;
     color: white;
 `;

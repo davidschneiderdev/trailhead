@@ -10,13 +10,19 @@ const StyledSearchResultsContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    // @media (min-width: 450px) {
+    //     height: 80vh;
+    //     justify-content: flex-start;
+    // }
 `;
 
 const StyledButton = styled(Button)`
     width: 90%;
-    background-color: white;
+    height: 5vh;
+    background-color: rgb(243, 242, 241);
     color: gray;
-    border: 2px solid lightgray;
+    border: 3px solid lightgray;
     border-radius: 30px;
     margin-bottom: 1em;
 `;
@@ -26,6 +32,10 @@ const SearchResultsContents = styled.div`
     max-height: 80vh;
     overflow: auto;
     padding: 1em;
+
+    @media (min-width: 450px) {
+        height: 55vh;
+    }
 `;
 
 
@@ -52,6 +62,7 @@ export default class SearchResults extends React.Component {
                         this.props.searchResults.map(result => {
                             return(
                                 <SearchResultElement
+                                    key={result.id}
                                     id={result.id}
                                     name={result.name}
                                     location={result.location}

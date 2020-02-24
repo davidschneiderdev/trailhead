@@ -85,17 +85,17 @@ export default class RunLogEntryForm extends React.Component {
     onLogSubmitClick(event) {
         // event.preventDefault();
         this.props.runLog[0].dateRun = this.state.dateLogged;
-        console.log(this.props.runLog);
+        // console.log(this.props.runLog);
         // console.log(event.key);
         this.props.handleLogSubmit(this.props.runLog);
     }
 
     updateRunDate(event) {
-        console.log(event.target.value);
+        // console.log(event.target.value);
         this.setState({
             dateLogged: event.target.value
         });
-        console.log(this.state.dateLogged);
+        // console.log(this.state.dateLogged);
     }
 
     onEnterClick(event) {
@@ -114,7 +114,8 @@ export default class RunLogEntryForm extends React.Component {
                 {
                     this.props.runLog.map(trail => {
                         return(
-                           <StyledLogEntry>
+                           <StyledLogEntry
+                                key={trail.length}>
                                <StyledLogHeader>
                                    <div>
                                        <StyledTrailName>{trail.name}</StyledTrailName>

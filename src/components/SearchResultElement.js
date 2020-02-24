@@ -49,29 +49,39 @@ const ElementTextBottom = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #f5f5f5;
+    background-color: #EBF2FA;
     padding: 1em;
     border-radius: 10px;
 `;
 
 const ElementTitle = styled.div`
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 700;
     margin: 0;
 
 `;
 
 const ElementLocation = styled.div`
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     margin: 0;
+    color: #656565
 
 `;
 
-const ElementLine = styled.div`
-    font-size: 12px;
+const ElementLength = styled.div`
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    color: #656565;
+
+`;
+
+const ElementStars = styled.div`
+    font-size: 14px;
     font-weight: 400;
     margin: 0;
+    color: #7f7f7f;
 `;
 
 export default class SearchResultElement extends React.Component {
@@ -81,18 +91,31 @@ export default class SearchResultElement extends React.Component {
     }
 
     render() {
+
+        let isImage = this.props.imgSrc;
+        let content;
+        let textWidth;
+
+        if (isImage) {
+            content = <ElementImage style={{backgroundImage: `url(${this.props.imgSrc})`}}></ElementImage>;
+        } else {
+            content = <ElementImage style={{display: `none`}}></ElementImage>;
+            textWidth = {width: '100%'} ;
+        }
+
             return(
                 <ElementContainer
                     onClick={this.onTrailSelect.bind(this)}>
-                    <ElementImage style={{backgroundImage: `url(${this.props.imgSrc})`}}></ElementImage>
-                    <ElementText>
+                    {content}
+                    <ElementText
+                        style={textWidth}>
                         <ElementTextTop>
                             <ElementTitle>{this.props.name}</ElementTitle>
                             <ElementLocation>{this.props.location}</ElementLocation>
                         </ElementTextTop>
                         <ElementTextBottom>
-                            <ElementLine>{this.props.length} miles</ElementLine>
-                            <ElementLine>{this.props.stars} ★ | {this.props.numRatings} Ratings</ElementLine>
+                            <ElementLength>{this.props.length} miles</ElementLength>
+                            <ElementStars>{this.props.stars} ★ | {this.props.numRatings} Ratings</ElementStars>
                         </ElementTextBottom>
                     </ElementText>
                 </ElementContainer>

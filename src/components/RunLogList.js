@@ -36,9 +36,10 @@ export default function RunLogList(props) {
     return(
         <StyledLogElement>
             {
-                props.completeRunLog.map(logObject => {
+                props.completeRunLog.map((logObject, id) => {
                     return(
-                        <StyledLogContent>
+                        <StyledLogContent
+                            key={id}>
                             <RunLogLine>{logObject.dateRun}</RunLogLine>
                             <RunLogLine>{logObject.name}</RunLogLine>
                             <RunLogLine>{logObject.length} mi.</RunLogLine>

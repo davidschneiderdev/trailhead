@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
 import styled from 'styled-components'
 import river from '../runningTrail.jpg'
+// import river from '../river.png'
 
 const StyledInputContainer = styled.div`
     height: 100%;
@@ -19,7 +20,7 @@ const StyledInputContainer = styled.div`
     0 0px 10px rgba(0, 0, 0, 0.035),
     0 0px 17.9px rgba(0, 0, 0, 0.042),
     0 0px 33.4px rgba(0, 0, 0, 0.05),
-    0 0px 80px rgba(0, 0, 0, 0.07)
+    0 0px 80px rgba(0, 0, 0, 0.07);
 `;
 
 const SearchInputForm = styled.div`
@@ -42,13 +43,20 @@ const SearchGraphicContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1em;
 `;
 
 const SearchGraphicFrame = styled.div`
     height: 250px;
     width: 250px;
     border-radius: 50%;
-    background-color: #f2f1f0;
+    background-color: #EBF2FA;
+    box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.02),
+    0 0px 5.3px rgba(0, 0, 0, 0.028),
+    0 0px 10px rgba(0, 0, 0, 0.035),
+    0 0px 17.9px rgba(0, 0, 0, 0.042);
+    // 0 0px 33.4px rgba(0, 0, 0, 0.05),
+    // 0 0px 80px rgba(0, 0, 0, 0.07);
     
 `;
 
@@ -56,12 +64,12 @@ const SearchGraphic = styled.img`
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    padding: 10px;
+    padding: 5px;
 
 `;
 
 const StyledRegionSelect = styled(Select)`
-    font-size: 18px;
+    font-size: 16px;
     border-width: 0;
 `;
 
@@ -79,23 +87,35 @@ const MaxMinSection = styled.div`
 `;
 
 const StyledDistanceForm = styled.form`
-    font-size: 18px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
     margin-bottom: 1em;
 `;
 
+const StyledDistanceLabel = styled.label`
+    margin: 0;
+`;
+
 const StyledDistanceInput = styled.input`
-    width: 170px;
+    width: 30px;
+    text-align: center;
+    margin-left: 10px;
     background: none;
     border-width: 0px;
+    border: .5px solid lightgray;
+    border-radius: 6px;
+    font-size: 16px;
 `;
 
 const StyledButton = styled(Button)`
     height: auto;
     width: 100%;
     font-size: 18px;
-    background-color: #f5f5f5;
-    color: darkgray;
-    border: 2px solid lightgray;
+    // background-color: #f5f5f5;
+    background-color: #319836;
+    color: white;
+    border: 1px solid #319836;
     border-radius: 30px;
 `;
 
@@ -124,7 +144,7 @@ export default class SearchInput extends React.Component {
 
         return (    
             <StyledInputContainer>
-                <SearchInputTitle>Search Atlanta Trails</SearchInputTitle>
+                <SearchInputTitle>Search Georgia Trails</SearchInputTitle>
                 <SearchGraphicContainer>
                     <SearchGraphicFrame>
                         <SearchGraphic src={river}/>
@@ -132,30 +152,28 @@ export default class SearchInput extends React.Component {
                 </SearchGraphicContainer>
                 <SearchInputForm>
                     <form>
-                        <input type="radio"/>
-                        <label>See results for Greater Atlanta</label>
+                        <label>Select region: </label>
+                        <StyledRegionSelect 
+                                options={this.props.dropdownOptions} 
+                                isSearchable
+                                placeholder='Atlanta'
+                                onChange={this.onAreaChange.bind(this)}/>
                     </form>
-                    <label>Narrow search to region: </label>
-                    <StyledRegionSelect 
-                            options={this.props.dropdownOptions} 
-                            isSearchable
-                            placeholder='Atlanta Region'
-                            onChange={this.onAreaChange.bind(this)}/>
                     <StyledOptions>
                         <MaxMinSection>
                             <StyledDistanceForm>
-                                <label>Min. distance (miles): </label>
+                                <StyledDistanceLabel>Min. distance (miles): </StyledDistanceLabel>
                                 <StyledDistanceInput
                                     type="number" 
-                                    placeholder=" Enter"
+                                    placeholder="0"
                                     onChange={this.onMinDistanceChange.bind(this)}>
                                 </StyledDistanceInput> 
                             </StyledDistanceForm>
                             <StyledDistanceForm>
-                                <label>Max. distance (miles): </label>
+                                <StyledDistanceLabel>Max. distance (miles): </StyledDistanceLabel>
                                 <StyledDistanceInput
                                     type="number" 
-                                    placeholder=" Enter"
+                                    placeholder="30"
                                     onChange={this.onMaxDistanceChange.bind(this)}>
                                 </StyledDistanceInput> 
                             </StyledDistanceForm>

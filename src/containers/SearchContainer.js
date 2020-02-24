@@ -6,11 +6,13 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 const atlantaAreas = [
-    { label: 'Marietta', value: 1, lat: 33.952602, lon: -84.549934 },
-    { label: 'Smyrna', value: 2, lat: 33.883991, lon: -84.514374 },
-    { label: 'Norcross', value: 3, lat: 33.941212, lon: -84.213531 },
-    { label: 'Roswell', value: 4, lat: 34.022003, lon: -84.361549 },
-    { label: 'Sandy Springs', value: 5, lat: 33.935101, lon: -84.360924 },
+    { label: 'Atlanta', value: 1, lat: 33.753746, lon: -84.386330 },
+    { label: 'Augusta', value: 2, lat: 33.466667, lon: -81.966667 },
+    { label: 'Columbus', value: 3, lat: 32.492222, lon: -84.940277 },
+    { label: 'Macon', value: 4, lat: 32.838131, lon: -83.634705 },
+    { label: 'Savannah', value: 5, lat: 32.076176, lon: -81.088371 },
+    { label: 'Athens', value: 6, lat: 33.950001, lon: -83.383331 },
+    { label: 'Valdosta', value: 7, lat: 30.832703, lon: -83.278488 }
 ]
 
 const StyledSearchContainer = styled.div`
@@ -43,7 +45,7 @@ export default class SearchContainer extends React.Component {
     }
 
     _updateSelectedOption(selectedOption) {
-        console.log(selectedOption);
+        // console.log(selectedOption);
         this.setState({ selectedOption })
     }
     
@@ -81,14 +83,14 @@ export default class SearchContainer extends React.Component {
     }
 
     _updateFavTrailSelected = () => {
-        console.log('fav trail selected');
+        // console.log('fav trail selected');
         this.setState({
             favTrailSelected: true
         })
     }
 
     async _updateTrailIdSelected(id) {
-        console.log(id);
+        // console.log(id);
         await this.setState({
             trailIdSelected: id,
             trailSelected: true
@@ -103,10 +105,10 @@ export default class SearchContainer extends React.Component {
     
     _getResults = (event) => {
         event.preventDefault();
-        console.table(this.state);
+        // console.table(this.state);
         axios.get(`https://www.trailrunproject.com/data/get-trails?lat=${this.state.selectedOption.lat}&lon=${this.state.selectedOption.lon}&maxDistance=${this.state.maxDistance}&minLength=${this.state.minDistance}&sort=${this.state.sortBy}&key=200688416-477b9e0468e40695259891ec8a715b01`)
             .then(response => {
-                console.log(response.data.trails);
+                // console.log(response.data.trails);
                 this.setState({
                     resultArray: response.data.trails,
                     searchIncomplete: false
