@@ -8,17 +8,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-Clone repo
-```
-git clone git@github.com:davschneider/atlanta-trail-running.git
-```
-Install dependencies
 ```
 npm i
-```
-
-& Start application
-```
 npm start
 ```
 ## Built With
@@ -30,8 +21,8 @@ npm start
 
 ## Author
 
-* **David Schneider** - [DavSchneider](https://github.com/davschneider)
+* **David Schneider**
 
 ## Acknowledgments
 
-* Many thanks to DigitalCrafts and @radishmouse for instruction and advice
+* Many thanks to DigitalCrafts and Chris @radishmouse for instruction and advice

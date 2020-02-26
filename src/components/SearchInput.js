@@ -46,8 +46,8 @@ const SearchGraphicContainer = styled.div`
 `;
 
 const SearchGraphicFrame = styled.div`
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
     border-radius: 50%;
     background-color: #EBF2FA;
     box-shadow: 0 0px 2.2px rgba(0, 0, 0, 0.02),
