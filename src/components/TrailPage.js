@@ -9,15 +9,33 @@ const TrailPageContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
+`;
+
+const StyledButton = styled(Button)`
+    width: 90%;
+    margin-bottom: 1em;
+    background-color: rgb(243, 242, 241);
+    color: gray;
+    border: 3px solid lightgray;
+    border-radius: 30px;
+`;
+
+const TrailPageContents = styled.div`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 `;
 
 const TrailInfoContainer = styled.div`
     width: 100%:
-    height: auto;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    flex-grow: 2;
+    justify-content: space-evenly;
     border-radius: 30px;
     background-color: white;
     padding: 1.5em;
@@ -32,71 +50,16 @@ const TrailInfoContainer = styled.div`
 
 `;
 
-const TrailPageNav = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgb(42, 67, 55);
-    margin-top: -50px;
-    padding: 40px 0 40px 0;
-
-    @media (min-width: 450px) {
-      border-radius: 28px;
-    }
-`;
-
-const TrailPageNavButtonList = styled.ul`
-    width: 100%:
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 0;
-    padding-top: 50px;
-`;
-
-const TrailPageNavButton = styled.li`
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 20px;
-    width: 50%;
-
-    &:hover {
-        color: lightgray;
-    }
-
-    > * {
-        margin: 10px;
-    }
-    
-`;
-
-const StyledButton = styled(Button)`
-    width: 90%;
-    margin-bottom: 1em;
-    background-color: rgb(243, 242, 241);
-    color: gray;
-    border: 3px solid lightgray;
-    border-radius: 30px;
-`;
-
 const TrailImageContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 1em;
-
 `;
 
 const TrailImage = styled.div`
-    height: 300px;
+    height: 200px;
     width: 100%;
     border-radius: 8px;
     background-size: cover;
@@ -120,6 +83,52 @@ const TrailStars = styled.div`
     font-size: 16px;
     color: #7f7f7f;
 `;
+
+const TrailPageNav = styled.div`
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(42, 67, 55);
+    margin-top: -70px;
+    padding: 0;
+    
+
+    @media (min-width: 450px) {
+        border-radius: 28px;
+    }
+`;
+
+const TrailPageNavButtonList = styled.div`
+    width: 100%:
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 80px 0 15px 0;
+`;
+
+const TrailPageNavButton = styled.div`
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 16px;
+    width: 50%;
+
+    &:hover {
+        color: lightgray;
+    }
+
+    > * {
+        margin: 10px;
+    }
+    
+`;
+
 
 
 export default class TrailPage extends React.Component {
@@ -156,31 +165,33 @@ export default class TrailPage extends React.Component {
         
         return(
             <TrailPageContainer>
-                    <StyledButton
-                        onClick={this.onReturnToList.bind(this)}>Return To Results
-                    </StyledButton>
-                <TrailInfoContainer>
-                    <TrailImageContainer>
-                        <TrailImage style={{backgroundImage: `url(${this.props.trailInfo[0].imgSmallMed})`}} />
-                    </TrailImageContainer>
-                    {/* <img src={this.props.trailInfo[0].imgSmallMed} alt='Trail'/> */}
-                    <h3>{this.props.trailInfo[0].name}</h3>
-                    <TrailDescription>{this.props.trailInfo[0].summary}</TrailDescription>
-                    <TrailLength>{this.props.trailInfo[0].length} miles</TrailLength>
-                    <TrailStars>{this.props.trailInfo[0].stars} ☆ | {this.props.trailInfo[0].starVotes} votes</TrailStars>
-                </TrailInfoContainer>
-                <TrailPageNav>
-                    <TrailPageNavButtonList>
-                        <TrailPageNavButton
-                            onClick={this.onFavClick.bind(this)}>
-                                {favText}
+                <StyledButton
+                    onClick={this.onReturnToList.bind(this)}>Return To Results
+                </StyledButton>
+                <TrailPageContents>
+                    <TrailInfoContainer>
+                        <TrailImageContainer>
+                            <TrailImage style={{backgroundImage: `url(${this.props.trailInfo[0].imgSmallMed})`}} />
+                        </TrailImageContainer>
+                        {/* <img src={this.props.trailInfo[0].imgSmallMed} alt='Trail'/> */}
+                        <h3>{this.props.trailInfo[0].name}</h3>
+                        <TrailDescription>{this.props.trailInfo[0].summary}</TrailDescription>
+                        <TrailLength>{this.props.trailInfo[0].length} miles</TrailLength>
+                        <TrailStars>{this.props.trailInfo[0].stars} ☆ | {this.props.trailInfo[0].starVotes} votes</TrailStars>
+                    </TrailInfoContainer>
+                    <TrailPageNav>
+                        <TrailPageNavButtonList>
+                            <TrailPageNavButton
+                                onClick={this.onFavClick.bind(this)}>
+                                    {favText}
+                                </TrailPageNavButton>
+                            <TrailPageNavButton
+                                onClick={this.onLogClick.bind(this)}>
+                                {logText} Log Run
                             </TrailPageNavButton>
-                        <TrailPageNavButton
-                            onClick={this.onLogClick.bind(this)}>
-                            {logText} Log Run
-                        </TrailPageNavButton>
-                    </TrailPageNavButtonList>
-                </TrailPageNav>
+                        </TrailPageNavButtonList>
+                    </TrailPageNav>
+                </TrailPageContents>
             </TrailPageContainer>
         );
     }
